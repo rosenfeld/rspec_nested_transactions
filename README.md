@@ -1,4 +1,4 @@
-# RSpec Nested Transactions
+# RSpec Nested Transactions [![Build Status](https://travis-ci.org/rosenfeld/rspec_nested_transactions.svg?branch=master)](https://travis-ci.org/rosenfeld/rspec_nested_transactions)
 
 Creating the same records in the database for every single test in a group can slow down your
 suite. This is a common approach when using factories rather than fixtures loaded in suite
