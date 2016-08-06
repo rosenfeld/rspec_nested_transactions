@@ -3,6 +3,7 @@
 require 'delegate'
 require 'fiber'
 require 'rspec_nested_transactions/version'
+require 'rspec/core'
 
 module RspecNestedTransactions
   class FiberAwareGroup < SimpleDelegator
