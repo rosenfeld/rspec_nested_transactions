@@ -48,7 +48,7 @@ RSpec.configure do |c|
   c.nested_transaction do |example_or_group, run|
     (run[]; next) unless example_or_group.metadata[:db] # or delete this line if you don't care
     # With Sequel and PostgreSQL, Oracle, MS SQL Server, MySQL[InnoDB], ...:
-    DB.transaction(savepoint: true, rollback: :always, &run)
+    DB.transaction(auto_savepoint: true, savepoint: true, rollback: :always, &run)
 
     # With ActiveRecord:
     ActiveRecord::Base.transaction(requires_new: true) do
