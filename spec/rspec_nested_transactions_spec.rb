@@ -31,34 +31,34 @@ RSpec.describe 'nested_transaction hook', order: :defined,
       example('inner second'){ order << 'inner second' }
 
       example 'blocks are executed in the right order' do
-        expected = <<~END
-          config.before nested_transaction hook
-          config.before part 1
-          inner.before part 1
-          config.before first
-          inner.before first
-          first
-          inner.after  first
-          config.after  first
-          config.before second
-          inner.before second
-          second
-          inner.after  second
-          config.after  second
-          config.before inner
-          inner.before inner
-          config.before inner first
-          inner.before inner first
-          inner first
-          inner.after  inner first
-          config.after  inner first
-          config.before inner second
-          inner.before inner second
-          inner second
-          inner.after  inner second
-          config.after  inner second
-          config.before blocks are executed in the right order
-          inner.before blocks are executed in the right order
+        expected = <<-END
+config.before nested_transaction hook
+config.before part 1
+inner.before part 1
+config.before first
+inner.before first
+first
+inner.after  first
+config.after  first
+config.before second
+inner.before second
+second
+inner.after  second
+config.after  second
+config.before inner
+inner.before inner
+config.before inner first
+inner.before inner first
+inner first
+inner.after  inner first
+config.after  inner first
+config.before inner second
+inner.before inner second
+inner second
+inner.after  inner second
+config.after  inner second
+config.before blocks are executed in the right order
+inner.before blocks are executed in the right order
         END
         expect(order).to eq expected.split("\n")
         previous_count = order.size
@@ -70,15 +70,15 @@ RSpec.describe 'nested_transaction hook', order: :defined,
   # to run before it
   context 'part 2' do
     example 'before and after hooks order is correct' do
-      expected = <<~END
-        inner.after  blocks are executed in the right order
-        config.after  blocks are executed in the right order
-        inner.after  inner
-        config.after  inner
-        inner.after  part 1
-        config.after  part 1
-        config.before part 2
-        config.before before and after hooks order is correct
+      expected = <<-END
+inner.after  blocks are executed in the right order
+config.after  blocks are executed in the right order
+inner.after  inner
+config.after  inner
+inner.after  part 1
+config.after  part 1
+config.before part 2
+config.before before and after hooks order is correct
       END
       expect(order[previous_count..-1]).to eq expected.split("\n")
     end
